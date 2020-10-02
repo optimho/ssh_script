@@ -48,10 +48,8 @@ netmiko is used as the terminal  see its API here https://ktbyers.github.io/netm
 edit the config_bak,ini file and rename it to config.ini
 """
 
-try:
-    import netmiko
-except ImportError:
-    print('Shucks looks like you need to import netmiko first: pip3 install -U netmiko')
+
+import netmiko
 
 # configure command line arguements
 import argparse
@@ -75,6 +73,10 @@ config= ConfigParser()
 config.read('config.ini')
 
 def establishConnection(ip, device, user, password) -> object:
+    """
+
+    :rtype: object
+    """
     try:
         return netmiko.ConnectHandler(ip=ip, device_type=device, username=user, password=password)
     except Exception as e:
@@ -89,7 +91,7 @@ def commit(connection):
     except Exception as e:
         print("That command was not successful ", e)
 
-    print('committed')
+    print('..............committed...............')
 
 
 def save(connection):
@@ -127,7 +129,7 @@ def show(connection):
 
         print(a)
 
-def configure(connection):
+def configure(connection) -> object:
     """Method to put the router into a configuration mode so that you can configure the router firewall."""
     try:
         connection.config_mode('configure', 'configure\r\n')
@@ -143,14 +145,14 @@ def exit(connection):
         print("That command was not successful ", e)
 
 
-def internetOffTCP(connection):
+def internetOffHttp(connection):
     """turns rule number 1 off - preconfigured in the edge router to enable internet traffic going to the internet
     from the mac address of this computer"""
     try:
         connection.send_command("delete firewall name Internet rule 1 disable")
     except Exception as e:
         print("That command was not successful ", e)
-def internetOffUDP(connection):
+def internetOffHttps(connection):
     """turns rule number 1 off - preconfigured in the edge router to enable internet traffic going to the internet
     from the mac address of this computer"""
     try:
@@ -158,7 +160,7 @@ def internetOffUDP(connection):
     except Exception as e:
         print("That command was not successful ", e)
 
-def internetOnTCP(connection):
+def internetOnHttp(connection):
     """turns rule number 1 on - preconfigured in the edge router to block internet traffic going to the internet
     from the mac address of this computer"""
     try:
@@ -166,7 +168,7 @@ def internetOnTCP(connection):
     except Exception as e:
         print("That command was not successful ", e)
 
-def internetOnUDP(connection):
+def internetOnHttps(connection):
     """turns rule number 1 on - preconfigured in the edge router to block internet traffic going to the internet
     from the mac address of this computer"""
     try:
@@ -189,8 +191,9 @@ if __name__ == '__main__':
     if args.disable and connection:
 
         configure(connection)               # put the router in a configuration mode
-        internetOffTCP(connection)      # dissable rule for tcp
-        internetOffUDP(connection)      # disable UDP traffic
+        print('........disable_Internet..............')
+        internetOffHttp(connection)         # dissable rule for tcp
+        internetOffHttps(connection)        # disable Https traffic on port 443
         commit(connection)                  # commit the change
         exit(connection)                    # Exit the edit mode
         disconnect(connection)              # Disconnect from the termidisconnect(connection)             i
@@ -200,8 +203,9 @@ if __name__ == '__main__':
     elif args.enable and connection:
 
         configure(connection)               # Put the router in a configuration mode
-        internetOnTCP(connection)       # enable the rule for TCP traffic
-        internetOnUDP(connection)       #enable UDP traffic
+        print('.........enable_Internet..............')
+        internetOnHttp(connection)          # enable the rule for TCP traffic on port 443
+        internetOnHttps(connection)         #enable Https traffic
         commit(connection)                  # commit the change and enable the change
         exit(connection)                    # Exit the edit mode
         disconnect(connection)              #Disconnect from the terminal
@@ -214,7 +218,7 @@ if __name__ == '__main__':
 
 
     elif args.quit and connection:
-        print('quitting...')
+        print('...........quitting....................')
         disconnect(connection)  # Disconnect from the terminal
 
 
