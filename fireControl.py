@@ -44,107 +44,6 @@ The next part is to write a script that can run on a local machine that can remo
 
 netmiko is used as the terminal  see its API here https://ktbyers.github.io/netmiko/docs/netmiko/index.html#header-submodules
 
-The suported routers and switches are:
-a10
-accedian
-adtran_os
-alcatel_aos
-alcatel_sros
-apresia_aeos
-arista_eos
-aruba_os
-avaya_ers
-avaya_vsp
-broadcom_icos
-brocade_fastiron
-brocade_netiron
-brocade_nos
-brocade_vdx
-brocade_vyos
-calix_b6
-centec_os
-checkpoint_gaia
-ciena_saos
-cisco_asa
-cisco_ios
-cisco_nxos
-cisco_s300
-cisco_tp
-cisco_wlc
-cisco_xe
-cisco_xr
-cloudgenix_ion
-coriant
-dell_dnos9
-dell_force10
-dell_isilon
-dell_os10
-dell_os6
-dell_os9
-dell_powerconnect
-dlink_ds
-eltex
-eltex_esr
-endace
-enterasys
-extreme
-extreme_ers
-extreme_exos
-extreme_netiron
-extreme_nos
-extreme_slx
-extreme_vdx
-extreme_vsp
-extreme_wing
-f5_linux
-f5_ltm
-f5_tmsh
-flexvnf
-fortinet
-generic
-generic_termserver
-hp_comware
-hp_procurve
-huawei
-huawei_olt
-huawei_smartax
-huawei_vrpv8
-ipinfusion_ocnos
-juniper
-juniper_junos
-juniper_screenos
-keymile
-keymile_nos
-linux
-mellanox
-mellanox_mlnxos
-mikrotik_routeros
-mikrotik_switchos
-mrv_lx
-mrv_optiswitch
-netapp_cdot
-netgear_prosafe
-netscaler
-nokia_sros
-oneaccess_oneos
-ovs_linux
-paloalto_panos
-pluribus
-quanta_mesh
-rad_etx
-raisecom_roap
-ruckus_fastiron
-ruijie_os
-sixwind_os
-sophos_sfos
-ubiquiti_edge
-ubiquiti_edgeswitch
-ubiquiti_unifiswitch
-vyatta_vyos
-vyos
-watchguard_fireware
-yamaha
-zte_zxros
 
 edit the config_bak,ini file and rename it to config.ini
 """
@@ -157,7 +56,7 @@ except ImportError:
 # configure command line arguements
 import argparse
 parser=argparse.ArgumentParser(description='Switch on and off preconfigured edge router firewall rules from command line')
-#parser.add_argument('-t', '--target', type=str, metavar='', required=False, help='The user being targeted')
+parser.add_argument('-t', '--target', type=str, metavar='', required=False, help='The user being targeted')
 group = parser.add_mutually_exclusive_group()
 group.add_argument('-e', '--enable', action='store_true',  help='Enable Liams Internet')
 group.add_argument('-d', '--disable', action='store_true',  help='Disable  Liams internet')
@@ -172,19 +71,15 @@ args=parser.parse_args()
 
 #config parser is used to read configuration files
 from configparser import ConfigParser
-
 config= ConfigParser()
 config.read('config.ini')
 
-def establishConnection(ip: object = '', user: object = '', password: object = '') -> object:
+def establishConnection(ip, device, user, password) -> object:
     try:
-        return netmiko.ConnectHandler(ip="192.168.1.1", device_type="vyatta_vyos", username="Optimho",
-                                            password="Blackmamba")
+        return netmiko.ConnectHandler(ip=ip, device_type=device, username=user, password=password)
     except Exception as e:
         print("There has been a connection error", e)
         connection = None
-
-
 
 
 def commit(connection):
@@ -248,7 +143,14 @@ def exit(connection):
         print("That command was not successful ", e)
 
 
-def liamInternetOn(connection):
+def internetOffTCP(connection):
+    """turns rule number 1 off - preconfigured in the edge router to enable internet traffic going to the internet
+    from the mac address of this computer"""
+    try:
+        connection.send_command("delete firewall name Internet rule 1 disable")
+    except Exception as e:
+        print("That command was not successful ", e)
+def internetOffUDP(connection):
     """turns rule number 1 off - preconfigured in the edge router to enable internet traffic going to the internet
     from the mac address of this computer"""
     try:
@@ -256,8 +158,7 @@ def liamInternetOn(connection):
     except Exception as e:
         print("That command was not successful ", e)
 
-
-def liamInternetOff(connection):
+def internetOnTCP(connection):
     """turns rule number 1 on - preconfigured in the edge router to block internet traffic going to the internet
     from the mac address of this computer"""
     try:
@@ -265,58 +166,73 @@ def liamInternetOff(connection):
     except Exception as e:
         print("That command was not successful ", e)
 
+def internetOnUDP(connection):
+    """turns rule number 1 on - preconfigured in the edge router to block internet traffic going to the internet
+    from the mac address of this computer"""
+    try:
+        connection.send_command("set firewall name Internet rule 1 disable")
+    except Exception as e:
+        print("That command was not successful ", e)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print ('Opening the connection ...............')
-    connection = establishConnection(ip=config['connection']['ip'], user=config['credentials']['user'],
-                                     password=config['credentials']['pass'])
+    print('Opening the connection ...............')
 
-    if args.disable:
-        # connect to the router
-        # if establishConnection():            #Check to see if a connection has been made
-        configure(connection) # put the router in a configuration mode
-        liamInternetOn(connection)  # dissable rule
-        commit(connection)  # commit the change
-        exit(connection)
-        # save(connection)               #Save the change as a permanent change
+    ip=config['connection']['ip']
+    device=config['connection']['device']
+    user=config['credentials']['user']
+    password=config['credentials']['pass']
+
+    connection = establishConnection(ip, device, user, password)
 
 
-    elif args.enable:
-        # establish connection
-        # if establishConnection(connection):  #If a connection is made
-        configure(connection)  # Put the router in a configuration mode
-        liamInternetOff(connection)  # enable the rule
-        commit(connection)  # commit the change and enable the change
+    if args.disable and connection:
+
+        configure(connection)               # put the router in a configuration mode
+        internetOffTCP(connection)      # dissable rule for tcp
+        internetOffUDP(connection)      # disable UDP traffic
+        commit(connection)                  # commit the change
+        exit(connection)                    # Exit the edit mode
+        disconnect(connection)              # Disconnect from the termidisconnect(connection)             i
+        # save(connection)                  #Save the change as a permanent change
+
+
+    elif args.enable and connection:
+
+        configure(connection)               # Put the router in a configuration mode
+        internetOnTCP(connection)       # enable the rule for TCP traffic
+        internetOnUDP(connection)       #enable UDP traffic
+        commit(connection)                  # commit the change and enable the change
+        exit(connection)                    # Exit the edit mode
+        disconnect(connection)              #Disconnect from the terminal
         #  #save(connection)                #Option to mahe the change permanent
-        exit(connection)
-    ## disconnect(connection)           #Disconnect from the terminal
 
-    elif args.uptime:
-        print('Router uptime')
+    elif args.uptime and connection:
+        print('............Router uptime.............')
         print(upTime(connection))  # show the up time of the router
+        disconnect(connection)
 
 
-    elif args.quit:
-        print('quiting...')
+    elif args.quit and connection:
+        print('quitting...')
         disconnect(connection)  # Disconnect from the terminal
 
 
-    elif args.show:
+    elif args.show and connection:
         configure(connection)
         show(connection)
         exit(connection)
 
-    elif args.exit:
+    elif args.exit and connection:
         exit(connection)
         a = connection.send_command('whoami')
         if 'edit' not in a:
             print('ok')
 
-    elif args.host:
+    elif args.host and connection:
         print(connection.send_command('hostname'))
 
-    elif args.configure:
+    elif args.configure and connection:
         configure(connection)
         a=connection.send_command('whoami')
         if 'edit' in a:
