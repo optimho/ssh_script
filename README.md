@@ -32,5 +32,5 @@ To make things work you need to make sure the config.ini file is up to date, ren
 <b>-u or uptime</b>    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Is the router up? <br>
 <b>-s or show</b>           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; &nbsp; &nbsp;   Show the firewall rules<br> 
 <b>-x or exit</b>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp; &nbsp;   &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;  Leave the configuration console?<br> 
-<b>-q or quit</b>       &nbsp;&nbsp;&nbsp;&nbsp;       &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;  Leave and shut connection<br>
-<b>-n or host</b>       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp; &nbsp; &nbsp;    Router hos&nbsp;t name<br>
+<b>-q or quit</b>       &nbsp;&nbsp;&nbsp;       &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;  Leave and shut connection<br>
+<b>-n or host</b>       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp; &nbsp; &nbsp;    Router host name<br>
