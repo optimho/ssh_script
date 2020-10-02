@@ -226,24 +226,29 @@ if __name__ == '__main__':
         configure(connection)
         show(connection)
         exit(connection)
+        disconnect(connection)
 
     elif args.exit and connection:
         exit(connection)
         a = connection.send_command('whoami')
         if 'edit' not in a:
             print('ok')
+        disconnect(connection)
 
     elif args.host and connection:
         print(connection.send_command('hostname'))
+        disconnect(connection)
 
     elif args.configure and connection:
         configure(connection)
         a=connection.send_command('whoami')
         if 'edit' in a:
             print('ok')
+        disconnect(connection)
 
     else:
         print('...No Commands, so close session......')
         exit(connection)
         disconnect(connection)
+
 
