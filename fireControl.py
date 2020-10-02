@@ -185,7 +185,7 @@ if __name__ == '__main__':
     user=config['credentials']['user']
     password=config['credentials']['pass']
 
-    connection = establishConnection(ip, device, user, password)
+    connection: object = establishConnection(ip, device, user, password)
 
 
     if args.disable and connection:
