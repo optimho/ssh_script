@@ -19,3 +19,18 @@ run the script with python3 <b>fireControl.py -u </b> to see if the router is re
 
 To make things work you need to make sure the config.ini file is up to date, rename the config1.ini file to config.ini and make sure your passwords and ip addresses are filled in correctly in the config.ini file
   
+  too run this command line program see the following examples
+  
+  <b>python3 fireControl.py -n</b> 
+          <br>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  or<br>
+  <b>python3 fireControl.py host</b>
+<h5><u>Comand line switch options</u> </h5>  
+
+<b>-e or Enable</b>    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               Enable Internet <br>
+<b>-d or Disable</b>        &nbsp;&nbsp; &nbsp; &nbsp;   &nbsp;        Disable the internet <br> 
+<b>-c or configure</b>      &nbsp; &nbsp; &nbsp;       Put the router in configuration mode <br> 
+<b>-u or uptime</b>    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Is the router up? <br>
+<b>-s or show</b>           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; &nbsp; &nbsp;   Show the firewall rules<br> 
+<b>-x or exit</b>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp; &nbsp;   &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;  Leave the configuration console?<br> 
+<b>-q or quit</b>       &nbsp;&nbsp;&nbsp;&nbsp;       &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;  Leave and shut connection<br>
+<b>-n or host</b>       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp; &nbsp; &nbsp;    Router hos&nbsp;t name<br>
