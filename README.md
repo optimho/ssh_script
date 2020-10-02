@@ -30,8 +30,8 @@ To make things work you need to make sure the config.ini file is up to date, ren
 <h5><u>Comand line switch options</u></h5>  
 
 
--e or Enable   &emsp;   Enable Internet <br>
--d or Disable   &emsp;  Disable the internet   
+-e or enable   &emsp;   Enable Internet <br>
+-d or disable   &emsp;  Disable the internet   
 -c or configure &emsp;  Put the router in configuration mode <br>
 -u or uptime   &emsp; &emsp;   Is the router up? <br>
 -s or show    &emsp;&emsp;  &emsp;   Show the firewall rules<br> 
