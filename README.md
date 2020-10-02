@@ -1,4 +1,7 @@
 <h1>Fire Control</h1>
+<style>
+p {indent-text: 0em;}
+</style>
 
 Allows one to enable and disable pre configured firewall rules on an edge router with a simple command line tool.
 The tool can be installed on any computer on the same network as the router. 
@@ -24,13 +27,14 @@ To make things work you need to make sure the config.ini file is up to date, ren
   <b>python3 fireControl.py -n</b> 
           <br>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  or<br>
   <b>python3 fireControl.py host</b>
-<h5><u>Comand line switch options</u> </h5>  
+<h5><u>Comand line switch options</u></h5>  
 
-<b>-e or Enable</b>    &nbsp;&nbsp;&nbsp;&nbsp;              Enable Internet <br>
-<b>-d or Disable</b>       &nbsp;&nbsp;&nbsp;&nbsp;    Disable the internet <br> 
-<b>-c or configure</b>      &nbsp; &nbsp; &nbsp;       Put the router in configuration mode <br> 
-<b>-u or uptime</b>    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Is the router up? <br>
-<b>-s or show</b>           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; &nbsp; &nbsp;   Show the firewall rules<br> 
-<b>-x or exit</b>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp; &nbsp;   &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;  Leave the configuration console?<br> 
-<b>-q or quit</b>       &nbsp;&nbsp;&nbsp;       &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;  Leave and shut connection<br>
-<b>-n or host</b>       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      &nbsp; &nbsp; &nbsp;    Router host name<br>
+
+-e or Enable   &emsp;   Enable Internet <br>
+-d or Disable   &emsp;  Disable the internet   
+-c or configure &emsp;  Put the router in configuration mode <br>
+-u or uptime   &emsp; &emsp;   Is the router up? <br>
+-s or show    &emsp;&emsp;  &emsp;   Show the firewall rules<br> 
+-x or exit    &emsp; &emsp;&emsp;&emsp;   Leave the configuration console?<br> 
+-q or quit    &emsp; &emsp;&emsp;   Leave and shut connection<br>
+-n or host    &emsp; &emsp;&emsp;   Router host name<br>
