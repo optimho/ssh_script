@@ -26,8 +26,8 @@ To make things work you need to make sure the config.ini file is up to date, ren
   <b>python3 fireControl.py host</b>
 <h5><u>Comand line switch options</u> </h5>  
 
-<b>-e or Enable</b>    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               Enable Internet <br>
-<b>-d or Disable</b>        &nbsp;&nbsp; &nbsp; &nbsp;   &nbsp;        Disable the internet <br> 
+<b>-e or Enable</b>    &nbsp;&nbsp;&nbsp;&nbsp;              Enable Internet <br>
+<b>-d or Disable</b>       &nbsp;&nbsp;&nbsp;&nbsp;    Disable the internet <br> 
 <b>-c or configure</b>      &nbsp; &nbsp; &nbsp;       Put the router in configuration mode <br> 
 <b>-u or uptime</b>    &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Is the router up? <br>
 <b>-s or show</b>           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; &nbsp; &nbsp;   Show the firewall rules<br> 
