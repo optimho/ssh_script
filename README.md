@@ -14,15 +14,15 @@ The rules are set up in the edge router and tested then they can be disabled.
 
 It also nicely demonstrates how you can use the netmiko to control the edge router.
 The application is intended as a command line tool so has a raft of options, although the 'enable' and 'disable' coare the 
-The ssh_script called firecontrol can be called on very easily to switch the firwall rule on or off.mmand line options are the most useful.
+The script called fireControl can be called on very easily to switch the firewall rules on or off.mmand line options are the most useful.
 
 The script can be run from a cron tool to make configuring of more complicated time of use and makes it easier to make a one time change.
 
 run the script with python3 <b>fireControl.py -u </b> to see if the router is responsive
 
-To make things work you need to make sure the config.ini file is up to date, rename the config1.ini file to config.ini and make sure your passwords and ip addresses are filled in correctly in the config.ini file
+To make things work you need to make sure the config.ini file is up to date, rename the config_bak.ini file to config.ini and make sure your passwords and ip addresses are filled in correctly in the config.ini file
   
-  too run this command line program see the following examples
+too run this command line program see the following examples
   
   <b>python3 fireControl.py -n</b> 
           <br>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  or<br>

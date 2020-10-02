@@ -1,11 +1,11 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='fire Control',
     version='1',
-    packages=[''],
-    url='',
-    license='',
+    license='MIT',
+    url='www.optimho.com',
+    packages='requirements',
     author='michael',
     author_email='michael@duplessis.nz',
     description='Run scripts too enable and disable firewall rules'
