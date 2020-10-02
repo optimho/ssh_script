@@ -1,4 +1,3 @@
-# ssh_script
 <h1>Fire Control</h1>
 
 Allows one to enable and disable pre configured firewall rules on an edge router with a simple command line tool.
@@ -15,3 +14,6 @@ The application is intended as a command line tool so has a raft of options, alt
 The ssh_script called firecontrol can be called on very easily to switch the firwall rule on or off.mmand line options are the most useful.
 
 The script can be run from a cron tool to make configuring of more complicated time of use and makes it easier to make a one time change.
+
+run the script with python3 <b>fireControl.py -u</>
+  
