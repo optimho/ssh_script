@@ -16,4 +16,6 @@ The ssh_script called firecontrol can be called on very easily to switch the fir
 The script can be run from a cron tool to make configuring of more complicated time of use and makes it easier to make a one time change.
 
 run the script with python3 <b>fireControl.py -u </b> to see if the router is responsive
+
+To make things work you need to make sure the config.ini file is up to date, rename the config1.ini file to config.ini and make sure your passwords and ip addresses are filled in correctly in the config.ini file
   
