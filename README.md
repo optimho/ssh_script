@@ -30,11 +30,11 @@ To make things work you need to make sure the config.ini file is up to date, ren
 <h5><u>Comand line switch options</u></h5>  
 
 
--e or enable   &emsp;   Enable Internet <br>
--d or disable   &emsp;  Disable the internet   
--c or configure &emsp;  Put the router in configuration mode <br>
--u or uptime   &emsp; &emsp;   Is the router up? <br>
+-e or enable   &emsp;&ensp;&nbsp;&nbsp;   Enable Internet <br>
+-d or disable   &emsp; &ensp;&nbsp; Disable the internet   
+-c or configure &emsp;&nbsp;  Put the router in configuration mode <br>
+-u or uptime   &emsp; &emsp;&nbsp;   Is the router up? <br>
 -s or show    &emsp;&emsp;  &emsp;   Show the firewall rules<br> 
 -x or exit    &emsp; &emsp;&emsp;&emsp;   Leave the configuration console?<br> 
--q or quit    &emsp; &emsp;&emsp;   Leave and shut connection<br>
--n or host    &emsp; &emsp;&emsp;   Router host name<br>
+-q or quit    &emsp; &emsp;&emsp;&ensp;&nbsp;   Leave and shut connection<br>
+-n or host    &emsp; &emsp;&emsp;&ensp;   Router host name<br>
