@@ -1,0 +1,31 @@
+Too make this work extract the wheel using
+
+        pip3 install fireControl-0.01-py2.py3-none-any.whl
+
+The config.ini file needs your password and ip address,
+The config.ini file goes in the same space as the main.py file
+
+now run the file
+
+python3 main.py -n should test the connection by returning the host name of your router.
+
+Here are the other command line possibilities.
+The most useful being the enable and disable, the intended purpose.
+
+-e or enable      Enable Internet
+-d or disable     Disable the internet
+-c or configure   Put the router in configuration mode
+-u or uptime      Is the router up?
+-s or show        Show the firewall rules
+-x or exit        Leave the configuration console?
+-q or quit        Leave and shut connection
+-n or host        Router host name
+
+This program is intended to work with the edge router.
+
+access your edge router from your browser and create a firewall rules to block a specific device
+contact me on michael@duplessis.nz to help you set up rules and modify the code if you need to add additional
+switches to block say other devices.
+
+I will try and write up a guide to how to do this at some stage but I am quite lazy.
+
