@@ -38,3 +38,6 @@ too run this command line program see the following examples
 -x or exit    &emsp; &emsp;&emsp;&emsp;   Leave the configuration console?<br> 
 -q or quit    &emsp; &emsp;&emsp;&ensp;&nbsp;   Leave and shut connection<br>
 -n or host    &emsp; &emsp;&emsp;&ensp;   Router host name<br>
+
+To taylor make this application, just look at expanding the methods in the fireControl.py
+and the command line options in main py
