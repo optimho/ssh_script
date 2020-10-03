@@ -53,6 +53,8 @@ from fireControlPkg.fireControl import *
 #config parser is used to read configuration files
 from configparser import ConfigParser
 
+from venv.fireControlPkg.fireControl import configure
+
 config = ConfigParser()
 config.read('config.ini')
 
