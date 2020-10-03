@@ -56,8 +56,6 @@ from configparser import ConfigParser
 config = ConfigParser()
 config.read('config.ini')
 
-
-
 if __name__ == '__main__':
     print('Opening the connection ...............')
 
@@ -66,9 +64,7 @@ if __name__ == '__main__':
     device = config['connection']['device']
     user = config['credentials']['user']
     password = config['credentials']['pass']
-
     connection = establishConnection(ip, device, user, password)
-
 
     if args.disable and connection:
 
