@@ -44,5 +44,5 @@ setuptools.setup(
     ],
     python_requires='>=3.2',
     keywords='firewall edgrouter script',
-    install_requires=['netmeko==3.3.2', 'six==1.15.0'],
+    install_requires=['netmiko==3.3.2', 'six==1.15.0'],
 )
