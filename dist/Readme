@@ -8,7 +8,7 @@ The config.ini file goes in the same space as the main.py file
 now run the file
 
 python3 main.py -n should test the connection by returning the host name of your router.
-                        or
+                        or maybe
 python3 fireControl.py -n should test the connection by returning the host name of your router.
 
 Here are the other command line possibilities.
